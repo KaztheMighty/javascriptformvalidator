@@ -1,5 +1,21 @@
 <script>
 
+function nonEmptyValidation(){
+
+
+}
+
+function isNumberValidation(){
+
+	
+}
+
+function regexValidation(){
+
+	
+}
+
+
 </script>
 
 
@@ -9,19 +25,24 @@
 		<title>JavaScript Form Validator</title>
 	</head>
 	<body>
-		<span>No Validation</span>
-		<form></form>
 		
-		<span>"Required" Validation</span>
-		<form></form>
+		<form name="noVal">
+			<span>No Validation</span>
+				Name: <input type="text" name="nameNoVal">
 
-		<span>Non-Empty Validation</span>
-		<form></form>
+			<span>"Required" Validation</span>
+				Name: <input type="text" name="requiredVal" required>
+			
+			<span>Non-Empty Validation</span>
+				Name: <input type="text" name="nonempVal" onsubmit="return nonEmptyValidation()">
+			
+			<span>Is A Number Validation</span>
+				Name: <input type="text" name="isNoVal" onsubmit="return isNumberValidation()>
+			
+			<span>Regex Validation</span>
+				Name: <input type="text" name="regexVal" onsubmit="return regexValidation()>
 
-		<span>Is A Number Validation</span>
-		<form></form>
-
-		<span>Regex Validation</span>
-		<form></form>
+			<input type="submit" value="submit">
+		</form>
 	</body>
 </html>
