@@ -1,8 +1,11 @@
 <script>
 
 function nonEmptyValidation(){
-
-
+	var x = document.forms["validation"]["nonempVal"].value;
+	if (x == "") {
+		document.getElementById("nEVHidden").style.display = "";
+		return false;
+	}
 }
 
 function isNumberValidation(){
@@ -26,21 +29,22 @@ function regexValidation(){
 	</head>
 	<body>
 		
-		<form name="noVal">
+		<form name="validation">
 			<span>No Validation</span>
-				Name: <input type="text" name="nameNoVal">
+				Name: <input type="text" name="nameNoVal"> <br />
 
 			<span>"Required" Validation</span>
-				Name: <input type="text" name="requiredVal" required>
+				Name: <input type="text" name="requiredVal" required> <br />
 			
 			<span>Non-Empty Validation</span>
-				Name: <input type="text" name="nonempVal" onsubmit="return nonEmptyValidation()">
+				Name: <input type="text" name="nonempVal" onsubmit="return nonEmptyValidation()"> <br />
+			<span id="nEVHidden" display="none"><i>Please enter in characters!</i></span>
 			
 			<span>Is A Number Validation</span>
-				Name: <input type="text" name="isNoVal" onsubmit="return isNumberValidation()>
+				Name: <input type="text" name="isNoVal" onsubmit="return isNumberValidation()"> <br />
 			
 			<span>Regex Validation</span>
-				Name: <input type="text" name="regexVal" onsubmit="return regexValidation()>
+				Name: <input type="text" name="regexVal" onsubmit="return regexValidation()"> <br />
 
 			<input type="submit" value="submit">
 		</form>
