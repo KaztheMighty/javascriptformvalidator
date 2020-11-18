@@ -1,19 +1,29 @@
 <script>
+//Pretty sure this works. Could be wrong. Maybe my brain is breaking, idk. 
+//BP 18/11/2020
 
+
+//Checks if the textbox is not empty
 function nonEmptyValidation(){
 	var x = document.forms["validation"]["nonempVal"].value;
 	if (x == "") {
-		document.getElementById("nEVHidden").style.display = "";
+		document.getElementById("nEVHidden").style.display = "block";
 		return false;
 	}
 }
 
+//Checks if the textbox is a number, no matter the size, just that it is one
 function isNumberValidation(){	
-}
+	var x = document.getElementById("isNoVal").value;
 
-function regexValidation(){
+	if (x == ""){ 
+		return false;
+	} else {
+		if(isNaN(x)){
+			return false;
+		}
+	}
 }
-
 
 </script>
 
@@ -33,10 +43,6 @@ function regexValidation(){
 				font-size: 20px;
 			}
 
-			span.hidden {
-				display: none;
-			}
-
 			body {
 				padding-left: 50px;
 				padding-top: 20px;
@@ -45,7 +51,7 @@ function regexValidation(){
 		
 	</head>
 	<body>
-		<form name="validation">
+		<form name="validation" onsubmit="return nonEmptyValidation() && isNumberValidation() && regexValidation()">
 			<span>No Validation</span> <br />
 				<input type="text" name="nameNoVal"> <br />
 
@@ -53,16 +59,18 @@ function regexValidation(){
 				<input type="text" name="requiredVal" required> <br />
 			
 			<span>Non-Empty Validation</span> <br />
-				<input type="text" name="nonempVal" onsubmit="return nonEmptyValidation()"> <br />
-			<span id="nEVHidden" color="red" class="hidden"><i>Please enter in characters!</i></span>
+				<input type="text" name="nonempVal">
+			<span id="nEVHidden" style="display: none; color: red;"><i>Please enter in characters!</i></span> <br />
 			
 			<span>Is A Number Validation</span> <br />
-				<input type="text" name="isNoVal" onsubmit="return isNumberValidation()"> <br />
+				<input type="text" name="isNoVal"> <br />
 			
+			<!-- Did this inline because I thought it'd save lines -->
 			<span>Regex Validation</span> <br />
-				<input type="text" name="regexVal" onsubmit="return regexValidation()"> <br />
+			<sub><i>Validation that the textbox has something in it, 8 characters with at least 1 letter and 1 number.</i></sub> <br />
+				<input type="text" name="regexVal" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" minlength="8"> <br />
 
-			<input type="submit" value="submit">
+			<input type="submit" value="Submit">
 		</form>
 	</body>
 </html>
